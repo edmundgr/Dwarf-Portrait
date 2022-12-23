@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Media;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -78,6 +79,9 @@ namespace Dwarf_Portrait
                 name = TI.ToTitleCase(name);
                 flag3List.Add(new FlagDisplay() { Name = name, Enabled = false });
             }
+
+            AssemblyName assemblyName = Assembly.GetExecutingAssembly().GetName();
+            this.Title = $"{assemblyName.Name} {assemblyName.Version.ToString()}";
         }
 
         private void fetchButton_Click(object sender, RoutedEventArgs e)
